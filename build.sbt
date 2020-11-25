@@ -1,14 +1,13 @@
+
 lazy val `lifecycle-dependent-typed-object` = (project in file("."))
   .settings(
     organization := "com.ikempf",
     name := "lifecycle-dependent-typed-object",
-    scalaVersion := "2.12.8",
-    scalacOptions += "-Ypartial-unification",
+    scalaVersion := "2.13.3",
     libraryDependencies ++= List(
-      "org.typelevel" %% "cats-core" % "1.5.0",
-      "org.scalatest" %% "scalatest" % "3.0.5" % Test
+      "org.typelevel" %% "cats-core" % "2.1.0"
     ),
-    addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.8"),
+    addCompilerPlugin(("org.typelevel" %% "kind-projector" % "0.11.0").cross(CrossVersion.full)),
     scalacOptions ++= List(
       "-target:jvm-1.8",
       "-feature",
@@ -18,10 +17,7 @@ lazy val `lifecycle-dependent-typed-object` = (project in file("."))
       "-deprecation",
       "-language:higherKinds",
       "-Xlint",
-      "-Ypartial-unification",
       "-Ywarn-dead-code",
-      "-Ywarn-infer-any",
-      "-Ywarn-nullary-override",
       "-Ywarn-unused:implicits",
       "-Ywarn-unused:imports",
       "-Ywarn-unused:locals",
